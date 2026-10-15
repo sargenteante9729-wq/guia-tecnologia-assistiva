@@ -56,6 +56,7 @@ body.intro-open{overflow:hidden}
     <button id="enterGuide" class="intro-enter" type="button" onclick="document.getElementById(\'introScreen\').remove();document.body.classList.remove(\'intro-open\')">ENTRAR NO GUIA <span>→</span></button>
     <small class="intro-hint">Clique para iniciar a experiência interativa</small>
   </div>
+  <button id="enableIntroAudio" type="button" onclick="const v=document.getElementById('introVideo');v.muted=false;v.volume=1;v.play().then(()=>{this.textContent='ÁUDIO ATIVADO ✓';this.disabled=true;this.style.opacity='.85'}).catch(()=>{this.textContent='TOQUE NOVAMENTE PARA ATIVAR O ÁUDIO'})" style="position:absolute;z-index:6;left:50%;bottom:100px;transform:translateX(-50%);border:1px solid #ffffffaa;border-radius:12px;padding:12px 18px;background:#123d75e8;color:#fff;font-weight:800;letter-spacing:.03em;box-shadow:0 8px 25px #00152d80;cursor:pointer;white-space:nowrap">🔊 ATIVAR ÁUDIO</button>
   <button id="enterGuideOverlay" type="button" onclick="document.getElementById('introScreen').remove();document.body.classList.remove('intro-open')" style="position:absolute;z-index:6;left:50%;bottom:34px;transform:translateX(-50%);border:0;border-radius:14px;padding:16px 26px;background:#fff;color:#123d75;font-weight:900;letter-spacing:.06em;box-shadow:0 8px 30px #00152d80;cursor:pointer;white-space:nowrap">ACESSAR O GUIA →</button>
   <button id="skipIntro" class="intro-skip" type="button" onclick="document.getElementById(\'introScreen\').remove();document.body.classList.remove(\'intro-open\')">Pular abertura ×</button>
 </section>
@@ -122,7 +123,8 @@ const enterGuideButton=document.getElementById("enterGuide");
 enterGuideButton.addEventListener("click",closeIntro);
 document.getElementById("skipIntro").addEventListener("click",closeIntro);
 if(introVideo){
-  introVideo.muted=true;
+  introVideo.muted=true; // Navegadores bloqueiam autoplay com áudio; o botão libera o som após clique do usuário.
+  introVideo.volume=1;
   introVideo.addEventListener("error",()=>{introScreen.classList.add("video-unavailable");});
   introVideo.play().catch(()=>{introScreen.classList.add("video-unavailable");});
 }
