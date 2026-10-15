@@ -46,6 +46,13 @@ body.intro-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.intro-copy,.intro-glow{animation:none}.intro-screen{transition:none}}
 @media(max-width:560px){.intro-mark{width:60px;height:60px;border-radius:18px;font-size:26px;margin-bottom:18px}.intro-copy{padding:20px 6px}.intro-pillars{gap:6px}.intro-pillars span{font-size:10px;padding:6px 9px}.intro-enter{margin-top:25px;min-height:49px}.intro-skip{right:12px;top:12px}}
 
+
+/* Destaque dos três cards de perguntas e navegação em letras maiúsculas */
+.wizard .field{border:2px solid #8db8d5;box-shadow:0 5px 18px #123b5014, inset 0 0 0 1px #ffffff;border-radius:20px;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.wizard .field:hover{border-color:#438fc4;box-shadow:0 9px 24px #123b5020, inset 0 0 0 1px #ffffff;transform:translateY(-2px)}
+.wizard .field:focus-within{border-color:#23698f;box-shadow:0 0 0 3px #438fc42b,0 8px 22px #123b5018}
+.nav button{text-transform:uppercase;letter-spacing:.025em}
+
 /* Tema azul-petróleo e azul-claro — preserva a estrutura e as funções existentes */
 :root{--navy:#123b50;--blue:#438fc4;--sky:#e6f3fc;--yellow:#ffd45a;--green:#287da8;--ink:#183443;--muted:#617b8a;--line:#c9dce8;--bg:#edf4f9;--white:#fff;--radius:18px}
 body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),linear-gradient(145deg,#eef5fa 0%,#e2edf5 48%,#f6f9fc 100%);color:var(--ink)}
