@@ -43,7 +43,7 @@ body.intro-open{overflow:hidden}
 @media(max-width:560px){.intro-mark{width:60px;height:60px;border-radius:18px;font-size:26px;margin-bottom:18px}.intro-copy{padding:20px 6px}.intro-pillars{gap:6px}.intro-pillars span{font-size:10px;padding:6px 9px}.intro-enter{margin-top:25px;min-height:49px}.intro-skip{right:12px;top:12px}}
 </style>
 <section id="introScreen" class="intro-screen" aria-label="Abertura do Guia Prático de Tecnologia Assistiva">
-  <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto" aria-label="Animação visual de abertura do guia">
+  <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto" aria-label="Animação visual de abertura do guia" onended="document.getElementById(\'introScreen\').remove();document.body.classList.remove(\'intro-open\')">
     <source src="videos/abertura-ta.mp4" type="video/mp4">
   </video>
   <div class="intro-glow" aria-hidden="true"></div>
@@ -53,10 +53,10 @@ body.intro-open{overflow:hidden}
     <h1>TECNOLOGIA<br><span>ASSISTIVA</span></h1>
     <p>Possibilidades de apoio para transformar barreiras em caminhos de aprendizagem.</p>
     <div class="intro-pillars"><span>Inclusão</span><span>Acessibilidade</span><span>Prática pedagógica</span></div>
-    <button id="enterGuide" class="intro-enter" type="button">ENTRAR NO GUIA <span>→</span></button>
+    <button id="enterGuide" class="intro-enter" type="button" onclick="document.getElementById(\'introScreen\').remove();document.body.classList.remove(\'intro-open\')">ENTRAR NO GUIA <span>→</span></button>
     <small class="intro-hint">Clique para iniciar a experiência interativa</small>
   </div>
-  <button id="skipIntro" class="intro-skip" type="button">Pular abertura ×</button>
+  <button id="skipIntro" class="intro-skip" type="button" onclick="document.getElementById(\'introScreen\').remove();document.body.classList.remove(\'intro-open\')">Pular abertura ×</button>
 </section>
 
 <header class="top"><div class="brand"><div class="logo" aria-hidden="true">TA</div><div><h1>Guia Prático de Uso da<br> Tecnologia Assistiva</h1><p>Recursos, possibilidades pedagógicas e orientações para o professor da sala regular.</p></div></div></header>
