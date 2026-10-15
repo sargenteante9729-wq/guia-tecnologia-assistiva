@@ -14,7 +14,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.top{background:
 :focus-visible{outline:3px solid #f5b800;outline-offset:2px}
 </style>
 </head>
-<body class="intro-open">\n
+<body class="intro-open">
+
 <style>
 /* Abertura em vídeo — identidade visual própria do Guia de Tecnologia Assistiva */
 .intro-screen{position:fixed;z-index:9999;inset:0;min-height:100svh;overflow:hidden;display:grid;place-items:center;background:#06162d;opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
@@ -111,7 +112,8 @@ body.intro-open{overflow:hidden}
 </section>
 <footer class="footer"><strong>Guia Prático de Uso da Tecnologia Assistiva</strong><br>Protótipo educacional baseado no documento fornecido. As sugestões precisam ser testadas e individualizadas. Esta versão funciona sem servidor e pode ser hospedada no GitHub Pages.</footer>
 </main>
-<script>\n
+<script>
+
 const introScreen=document.getElementById("introScreen");
 const introVideo=document.getElementById("introVideo");
 function closeIntro(){if(!introScreen||introScreen.classList.contains("is-leaving"))return;introScreen.classList.add("is-leaving");document.body.classList.remove("intro-open");setTimeout(()=>introScreen.remove(),700);try{introVideo.pause()}catch(e){}}
@@ -156,7 +158,8 @@ document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=
 $("#recommend").addEventListener("click",recommend);$("#clearWizard").addEventListener("click",()=>{$("#activity").value=$("#difficulty").value=$("#support").value="";$("#recommendations").innerHTML='<div class="empty">Preencha as três perguntas para visualizar possibilidades de Tecnologia Assistiva.</div>'});
 $("#testForm").addEventListener("submit",e=>{e.preventDefault();const resource=resources.find(r=>r.id===$("#testResource").value);const val=n=>new FormData(e.target).get(n)||"";const record={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),data:$("#testDate").value,atividade:$("#testActivity").value.trim(),recurso:resource?.name||$("#testResource").value,apoio:$("#testSupport").value,facilitou:val("facilitou"),autonomia:val("autonomia"),participacao:val("participacao"),observacoes:$("#observations").value.trim(),decisao:$("#decision").value};const records=getRecords();records.push(record);setRecords(records);e.target.reset();$("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();alert("Registro salvo neste navegador.");});
 $("#exportJson").addEventListener("click",()=>download("registros-teste-ta.json",JSON.stringify(getRecords(),null,2),"application/json;charset=utf-8"));
-$("#exportCsv").addEventListener("click",()=>{const rows=getRecords();if(!rows.length){alert("Ainda não há registros para exportar.");return}const keys=["data","atividade","recurso","apoio","facilitou","autonomia","participacao","observacoes","decisao"];const csv=[keys.join(";"),...rows.map(r=>keys.map(k=>csvCell(r[k])).join(";"))].join("\r\n");download("registros-teste-ta.csv","\ufeff"+csv,"text/csv;charset=utf-8")});
+$("#exportCsv").addEventListener("click",()=>{const rows=getRecords();if(!rows.length){alert("Ainda não há registros para exportar.");return}const keys=["data","atividade","recurso","apoio","facilitou","autonomia","participacao","observacoes","decisao"];const csv=[keys.join(";"),...rows.map(r=>keys.map(k=>csvCell(r[k])).join(";"))].join("\r
+");download("registros-teste-ta.csv","\ufeff"+csv,"text/csv;charset=utf-8")});
 $("#testResource").innerHTML+='<option disabled>— Escolha um recurso para testar —</option>'+resources.map(r=>`<option value="${r.id}">${escapeHtml(r.name)}</option>`).join("");
 $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
 </script>
