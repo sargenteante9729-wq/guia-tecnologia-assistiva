@@ -115,7 +115,9 @@ body.intro-open{overflow:hidden}
 const introScreen=document.getElementById("introScreen");
 const introVideo=document.getElementById("introVideo");
 function closeIntro(){if(!introScreen||introScreen.classList.contains("is-leaving"))return;introScreen.classList.add("is-leaving");document.body.classList.remove("intro-open");setTimeout(()=>introScreen.remove(),700);try{introVideo.pause()}catch(e){}}
-document.getElementById("enterGuide").addEventListener("click",closeIntro);
+const enterGuideButton=document.getElementById("enterGuide");
+enterGuideButton.textContent="ATIVAR SOM E ASSISTIR  →";
+enterGuideButton.addEventListener("click",()=>{if(introVideo&&introVideo.muted){introVideo.muted=false;introVideo.volume=1;introVideo.play().then(()=>{enterGuideButton.innerHTML="ENTRAR NO GUIA <span>→</span>";document.querySelector(".intro-hint").textContent="O vídeo está com som. Clique para acessar o guia.";}).catch(()=>{introVideo.muted=true;});return}closeIntro()});
 document.getElementById("skipIntro").addEventListener("click",closeIntro);
 if(introVideo){introVideo.muted=true;introVideo.play().catch(()=>{introScreen.classList.add("video-unavailable");});}
 
