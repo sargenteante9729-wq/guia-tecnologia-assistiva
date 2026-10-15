@@ -123,10 +123,14 @@ const enterGuideButton=document.getElementById("enterGuide");
 enterGuideButton.addEventListener("click",closeIntro);
 document.getElementById("skipIntro").addEventListener("click",closeIntro);
 if(introVideo){
-  introVideo.muted=true; // Navegadores bloqueiam autoplay com áudio; o botão libera o som após clique do usuário.
+  introVideo.muted=false;
   introVideo.volume=1;
   introVideo.addEventListener("error",()=>{introScreen.classList.add("video-unavailable");});
-  introVideo.play().catch(()=>{introScreen.classList.add("video-unavailable");});
+  // Tenta iniciar automaticamente com áudio. Se o navegador bloquear, mantém a abertura reproduzindo sem som.
+  introVideo.play().catch(()=>{
+    introVideo.muted=true;
+    introVideo.play().catch(()=>introScreen.classList.add("video-unavailable"));
+  });
 }
 
 const resources = [
