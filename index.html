@@ -43,7 +43,7 @@ body.intro-open{overflow:hidden}
 @media(max-width:560px){.intro-mark{width:60px;height:60px;border-radius:18px;font-size:26px;margin-bottom:18px}.intro-copy{padding:20px 6px}.intro-pillars{gap:6px}.intro-pillars span{font-size:10px;padding:6px 9px}.intro-enter{margin-top:25px;min-height:49px}.intro-skip{right:12px;top:12px}}
 </style>
 <section id="introScreen" class="intro-screen" aria-label="Abertura do Guia Prático de Tecnologia Assistiva">
-  <video id="introVideo" class="intro-video" autoplay muted loop playsinline preload="auto" aria-label="Animação visual de abertura do guia">
+  <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto" aria-label="Animação visual de abertura do guia">
     <source src="videos/abertura-ta.mp4" type="video/mp4">
   </video>
   <div class="intro-glow" aria-hidden="true"></div>
@@ -118,10 +118,14 @@ const introScreen=document.getElementById("introScreen");
 const introVideo=document.getElementById("introVideo");
 function closeIntro(){if(!introScreen||introScreen.classList.contains("is-leaving"))return;introScreen.classList.add("is-leaving");document.body.classList.remove("intro-open");setTimeout(()=>introScreen.remove(),700);try{introVideo.pause()}catch(e){}}
 const enterGuideButton=document.getElementById("enterGuide");
-enterGuideButton.textContent="ATIVAR SOM E ASSISTIR  →";
-enterGuideButton.addEventListener("click",()=>{if(introVideo&&introVideo.muted){introVideo.muted=false;introVideo.volume=1;introVideo.play().then(()=>{enterGuideButton.innerHTML="ENTRAR NO GUIA <span>→</span>";document.querySelector(".intro-hint").textContent="O vídeo está com som. Clique para acessar o guia.";}).catch(()=>{introVideo.muted=true;});return}closeIntro()});
+enterGuideButton.addEventListener("click",closeIntro);
 document.getElementById("skipIntro").addEventListener("click",closeIntro);
-if(introVideo){introVideo.muted=true;introVideo.play().catch(()=>{introScreen.classList.add("video-unavailable");});}
+if(introVideo){
+  introVideo.muted=true;
+  introVideo.addEventListener("ended",closeIntro);
+  introVideo.addEventListener("error",()=>{introScreen.classList.add("video-unavailable");});
+  introVideo.play().catch(()=>{introScreen.classList.add("video-unavailable");});
+}
 
 const resources = [
 {id:"engrossador",name:"Engrossador de lápis/caneta",cost:"Baixo custo",activities:["Escrever","Desenhar","Pintar"],difficulties:["Preensão ou pega do material","Coordenação motora fina","Força","Precisão dos movimentos","Fadiga"],function:"Aumenta a espessura do instrumento e pode facilitar a preensão e a manipulação.",forWho:"Pessoas que apresentam dificuldade para segurar lápis ou canetas convencionais.",how:["Escolha uma espessura compatível com a pega.","Insira o lápis ou a caneta e verifique a estabilidade.","Posicione o material confortavelmente.","Comece com uma atividade curta e observe o esforço."],activity:"Completar palavras, desenhar formas ou registrar palavras-chave.",tip:"Experimente diferentes espessuras e observe qual oferece maior funcionalidade e conforto.",tags:["escrita","lápis","caneta","preensão"]},
