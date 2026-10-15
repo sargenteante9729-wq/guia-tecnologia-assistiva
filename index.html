@@ -45,6 +45,38 @@ body.intro-open{overflow:hidden}
 @keyframes taGlow{from{transform:scale(.92) rotate(-6deg);opacity:.45}to{transform:scale(1.06) rotate(6deg);opacity:.9}}
 @media(prefers-reduced-motion:reduce){.intro-copy,.intro-glow{animation:none}.intro-screen{transition:none}}
 @media(max-width:560px){.intro-mark{width:60px;height:60px;border-radius:18px;font-size:26px;margin-bottom:18px}.intro-copy{padding:20px 6px}.intro-pillars{gap:6px}.intro-pillars span{font-size:10px;padding:6px 9px}.intro-enter{margin-top:25px;min-height:49px}.intro-skip{right:12px;top:12px}}
+
+/* Tema azul-petróleo e verde-água — preserva a estrutura e as funções existentes */
+:root{--navy:#123b46;--blue:#087f8c;--sky:#e2f7f4;--yellow:#ffd45a;--green:#168b83;--ink:#17343b;--muted:#58737a;--line:#c5e0df;--bg:#eaf4f4;--white:#fff;--radius:18px}
+body{background:radial-gradient(ellipse at 12% 0%,#d5f4ef 0,transparent 36%),linear-gradient(145deg,#edf7f7 0%,#e0eeee 48%,#f4f8f7 100%);color:var(--ink)}
+.top{background:linear-gradient(120deg,#103c48 0%,#087f8c 58%,#20a89b 100%);box-shadow:0 8px 28px #103c4824}
+.top:after{background:radial-gradient(circle,#ffffff20,transparent 70%)}
+.wrap{max-width:1220px}
+.nav{gap:12px;margin:0 0 26px;padding:12px;background:linear-gradient(135deg,#d6ecea,#edf7f6);border:1px solid #b6d8d6;border-radius:18px;box-shadow:0 8px 22px #103c4812}
+.nav button{position:relative;border:1px solid #a9cecc;background:linear-gradient(180deg,#fff,#f5fbfa);color:#123b46;font-weight:800;border-radius:13px;padding:13px 18px;box-shadow:0 3px 8px #103c4810;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease,color .18s ease}
+.nav button:hover,.nav button:focus-visible{transform:translateY(-3px);border-color:#159c99;background:#fff;box-shadow:0 10px 22px #0a59642b;outline:3px solid #20a89b24;outline-offset:1px}
+.nav button.active{background:linear-gradient(135deg,#103c48,#087f8c);color:#fff;border:1px solid #20b6aa;box-shadow:inset 0 -3px 0 #62d7c7,0 6px 16px #103c4830}
+.nav button.active:hover{background:linear-gradient(135deg,#0d323c,#066b77);box-shadow:inset 0 -3px 0 #62d7c7,0 10px 24px #103c4840}
+.hero,.card,.stepbox,.field,.result-card,.resource-card,.record{border-color:#c5e0df;box-shadow:0 7px 22px #103c480b}
+.hero{background:linear-gradient(135deg,#fff 0%,#e4f7f4 100%)}
+.eyebrow{color:#087f8c}
+.hero h2,.field label.title,.test-form legend{color:#123b46}
+.principle{border-left-color:#20a89b}
+.step{border-color:#c5e0df;background:linear-gradient(180deg,#fff,#f5fbfa)}
+.step b{color:#087f8c}
+.field:focus-within{border-color:#20a89b;box-shadow:0 0 0 3px #20a89b1a}
+.field select,.field input[type=text],.field input[type=date],.field textarea,.field input[type=number],.test-form textarea{border-color:#b9d5d4}
+.field select:focus,.field input:focus,.field textarea:focus,.test-form textarea:focus{outline:3px solid #20a89b30;border-color:#087f8c}
+.btn{background:linear-gradient(135deg,#087f8c,#20a89b);box-shadow:0 4px 12px #087f8c22;transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #087f8c32}
+.btn.secondary{background:#fff;border:1px solid #a9cecc;color:#123b46;box-shadow:0 2px 7px #103c4810}
+.btn.secondary:hover{background:#e7f7f4;border-color:#20a89b}
+.tag{background:#dff5f1;color:#126c6b}
+.pill{background:#dff5e9;color:#176544}
+.notice{border-color:#e6d58a}
+.footer{border-color:#c5e0df}
+.intro-screen{background:linear-gradient(135deg,#103c48,#087f8c,#20a89b)}
+@media(max-width:600px){.nav{padding:8px;gap:8px}.nav button{padding:11px 12px}}
 </style>
 <section id="introScreen" class="intro-screen" aria-label="Abertura do Guia Prático de Tecnologia Assistiva">
   <video id="introVideo" class="intro-video" autoplay muted loop playsinline preload="auto" aria-label="Animação visual de abertura do guia" onended="document.getElementById(\'introScreen\').remove();document.body.classList.remove(\'intro-open\')">
