@@ -16,6 +16,33 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.top{background:
 @media(max-width:850px){.intro,.test-layout{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.wizard{grid-template-columns:1fr}.resource-grid{grid-template-columns:1fr}}
 @media(max-width:540px){.top{padding:24px 18px}.brand{align-items:flex-start}.logo{width:48px;height:48px;flex-shrink:0}.wrap{padding:16px 12px 40px}.steps{grid-template-columns:1fr 1fr}.test-form{grid-template-columns:1fr}.test-form .full{grid-column:auto}.nav button{flex:1;padding:10px 8px;font-size:.9rem}.hero,.card{padding:17px}}
 :focus-visible{outline:3px solid #f5b800;outline-offset:2px}
+
+/* Bloco de abertura interativo e cards pedagógicos por etapa */
+.ta-intro-banner{display:block;position:relative;width:100%;margin:0 0 24px;padding:0;border:3px solid #438fc4;border-radius:22px;overflow:hidden;background:#123b50;box-shadow:0 12px 30px #123b5024;cursor:pointer;text-align:left}
+.ta-intro-banner img{display:block;width:100%;max-height:430px;object-fit:cover;object-position:center 42%;transition:transform .35s ease}
+.ta-intro-banner:hover img{transform:scale(1.025)}
+.ta-intro-banner:focus-visible{outline:4px solid #438fc4;outline-offset:4px}
+.ta-intro-banner .banner-cta{position:absolute;right:22px;bottom:18px;padding:10px 17px;border-radius:999px;background:#123b50;color:#fff;font-weight:900;letter-spacing:.04em;box-shadow:0 4px 15px #061d3d55}
+.ta-definition{position:fixed;inset:0;z-index:10010;display:none;place-items:center;padding:20px;background:#071e32b8;backdrop-filter:blur(5px)}
+.ta-definition.open{display:grid}
+.ta-definition-card{position:relative;width:min(760px,100%);max-height:88vh;overflow:auto;padding:30px;border:2px solid #8db8d5;border-radius:22px;background:linear-gradient(145deg,#fff,#eaf4fb);box-shadow:0 20px 60px #061d3d55;color:#183443}
+.ta-definition-card h2{margin:0 42px 16px 0;color:#123b50}
+.ta-definition-card p{font-size:1.04rem;line-height:1.75}
+.ta-definition-close{position:absolute;right:16px;top:14px;width:38px;height:38px;border:1px solid #b8d0e0;border-radius:50%;background:#fff;color:#123b50;font-size:24px;cursor:pointer}
+.workflow-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 22px}
+.workflow-card{min-height:150px;padding:18px;border:2px solid #b8d0e0;border-radius:18px;background:linear-gradient(155deg,#fff,#eaf4fb);box-shadow:0 7px 20px #123b5012}
+.workflow-card .workflow-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:12px;border-radius:13px;background:#d8ebf8;color:#174f70;font-size:22px}
+.workflow-card b{display:block;color:#123b50;margin-bottom:5px}
+.workflow-card span{color:#526e80;font-size:.92rem}
+.wizard .field{position:relative;padding-top:22px;min-height:220px}
+.wizard .field:before{display:grid;place-items:center;width:42px;height:42px;margin-bottom:12px;border-radius:13px;background:linear-gradient(135deg,#d9edf9,#b9d9ed);color:#174f70;font-size:21px;font-weight:900}
+.wizard .field:nth-child(1):before{content:"✎"}
+.wizard .field:nth-child(2):before{content:"⌕"}
+.wizard .field:nth-child(3):before{content:"♿"}
+.wizard .field .title{font-size:1.04rem}
+@media(max-width:850px){.workflow-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.workflow-cards{grid-template-columns:1fr}.ta-intro-banner img{min-height:210px;object-fit:cover}.ta-intro-banner .banner-cta{right:12px;bottom:12px;font-size:.8rem}.ta-definition-card{padding:24px 20px}}
+
 </style>
 </head>
 <body class="intro-open">
@@ -104,12 +131,26 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 </section>
 
 <header class="top"><div class="brand"><img class="brand-illustration" src="imagens/imagem-formacao.png" alt="Ilustração sobre imagem, informação e tecnologia assistiva"><div class="brand-text"><h1>Guia Prático de Uso da<br> Tecnologia Assistiva</h1><p>Recursos, possibilidades pedagógicas e orientações para o professor da sala regular.</p></div></div></header>
+
 <main class="wrap">
+<button class="ta-intro-banner" id="taDefinitionOpen" type="button" aria-haspopup="dialog" aria-controls="taDefinition">
+  <img src="imagens/imagem-formacao.png" alt="Estudantes e educadores utilizando recursos de Tecnologia Assistiva em uma sala de aula inclusiva">
+  <span class="banner-cta">VAMOS COMEÇAR →</span>
+</button>
+<div class="ta-definition" id="taDefinition" role="dialog" aria-modal="true" aria-labelledby="taDefinitionTitle">
+  <div class="ta-definition-card">
+    <button class="ta-definition-close" id="taDefinitionClose" type="button" aria-label="Fechar">×</button>
+    <h2 id="taDefinitionTitle">O que é Tecnologia Assistiva?</h2>
+    <p>A Tecnologia Assistiva (TA) reúne produtos, recursos, estratégias, práticas e serviços que podem ampliar a funcionalidade e favorecer a autonomia e a participação de pessoas com deficiência. No contexto escolar, pode apoiar o acesso aos materiais, à comunicação, à escrita, ao computador e às atividades pedagógicas.</p>
+    <p><strong>Importante:</strong> O conceito não se limita apenas a aparelhos eletrônicos complexos; ele abrange desde recursos simples do dia a dia até programas e ferramentas tecnológicas avançadas.</p>
+    <button class="btn" id="taDefinitionContinue" type="button">CONTINUAR →</button>
+  </div>
+</div>
 <nav class="nav" aria-label="Navegação principal">
 <button class="active" data-tab="inicio">Início</button><button data-tab="encontrar">Encontrar recursos</button><button data-tab="testar">Teste e registre</button><button data-tab="orientacoes">Como utilizar</button>
 </nav>
 <section id="inicio" class="panel active">
-<div class="intro"><div class="hero"><div class="eyebrow">Descobrir · Experimentar · Avaliar</div><h2>Tecnologia Assistiva na palma da mão</h2><p>Identifique a atividade escolar, observe a barreira funcional e explore recursos que podem favorecer o acesso, a participação, a aprendizagem e a autonomia do estudante.</p><div class="principle">Não é necessário identificar a deficiência. Comece pelo que o estudante precisa fazer e pelo que está dificultando a atividade.</div><div class="actions"><button class="btn" data-go="encontrar">Encontrar uma possibilidade →</button></div></div><div class="card"><h3>Como funciona</h3><div class="steps" style="grid-template-columns:1fr 1fr"><div class="step"><b>1. Identifique</b><span>Atividade e dificuldade observada.</span></div><div class="step"><b>2. Explore</b><span>Conheça recursos possíveis.</span></div><div class="step"><b>3. Experimente</b><span>Teste em uma tarefa real.</span></div><div class="step"><b>4. Registre</b><span>Decida manter, ajustar ou substituir.</span></div></div></div></div>
+<div class="intro"><div class="hero"><div class="eyebrow">Descobrir · Experimentar · Avaliar</div><h2>Tecnologia Assistiva na palma da mão</h2><p>Identifique a atividade escolar, observe a barreira funcional e explore recursos que podem favorecer o acesso, a participação, a aprendizagem e a autonomia do estudante.</p><div class="principle">Não é necessário identificar a deficiência. Comece pelo que o estudante precisa fazer e pelo que está dificultando a atividade.</div><div class="actions"><button class="btn" data-go="encontrar">Encontrar uma possibilidade →</button></div></div><div class="card"><h3>Como funciona</h3><div class="workflow-cards"><div class="workflow-card"><span class="workflow-icon">◎</span><b>1. Identifique</b><span>Atividade e dificuldade observada.</span></div><div class="workflow-card"><span class="workflow-icon">⌕</span><b>2. Explore</b><span>Conheça recursos possíveis.</span></div><div class="workflow-card"><span class="workflow-icon">▶</span><b>3. Experimente</b><span>Teste em uma tarefa real.</span></div><div class="workflow-card"><span class="workflow-icon">✓</span><b>4. Registre</b><span>Decida manter, ajustar ou substituir.</span></div></div></div></div>
 <div class="section-head"><div><h2>Princípios orientadores</h2><p>O recurso é uma possibilidade inicial, não uma solução automática.</p></div></div>
 <div class="steps"><div class="step"><b>Finalidade clara</b><span>Saiba o que o recurso pretende facilitar.</span></div><div class="step"><b>Ajuste individual</b><span>Considere atividade, conforto, alcance e recursos disponíveis.</span></div><div class="step"><b>Mediação adequada</b><span>Demonstre, dê tempo e ofereça apenas a ajuda necessária.</span></div><div class="step"><b>Avaliação prática</b><span>Observe realização, participação e autonomia.</span></div></div>
 <div class="notice"><strong>Importante:</strong> os resultados apresentados pelo guia são sugestões para orientar a experimentação. Verifique conforto, posicionamento e segurança; se necessário, solicite orientação especializada.</div>
@@ -213,6 +254,16 @@ $("#exportJson").addEventListener("click",()=>download("registros-teste-ta.json"
 $("#exportCsv").addEventListener("click",()=>{const rows=getRecords();if(!rows.length){alert("Ainda não há registros para exportar.");return}const keys=["data","atividade","recurso","apoio","facilitou","autonomia","participacao","observacoes","decisao"];const csv=[keys.join(";"),...rows.map(r=>keys.map(k=>csvCell(r[k])).join(";"))].join("\\r\\n");download("registros-teste-ta.csv","\ufeff"+csv,"text/csv;charset=utf-8")});
 $("#testResource").innerHTML+='<option disabled>— Escolha um recurso para testar —</option>'+resources.map(r=>`<option value="${r.id}">${escapeHtml(r.name)}</option>`).join("");
 $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
+
+const taDefinition=document.getElementById("taDefinition");
+function closeTaDefinition(){taDefinition.classList.remove("open");document.body.style.overflow="";}
+function openTaDefinition(){taDefinition.classList.add("open");document.body.style.overflow="hidden";}
+document.getElementById("taDefinitionOpen").addEventListener("click",openTaDefinition);
+document.getElementById("taDefinitionClose").addEventListener("click",closeTaDefinition);
+document.getElementById("taDefinitionContinue").addEventListener("click",closeTaDefinition);
+taDefinition.addEventListener("click",e=>{if(e.target===taDefinition)closeTaDefinition()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeTaDefinition()});
+
 </script>
 </body>
 </html>
