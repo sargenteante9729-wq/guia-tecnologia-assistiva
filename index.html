@@ -75,6 +75,10 @@ body:not(.ta-welcome) .footer{display:none!important}
 .identify-detail-card{width:min(820px,100%)}
 .identify-detail-card ul{padding-left:26px;margin:8px 0 20px;color:#183443}
 .identify-detail-card li{padding:4px 0;font-size:1.02rem;line-height:1.6}
+/* A janela IDENTIFIQUE precisa permanecer visível mesmo após sair da tela de boas-vindas */
+body:not(.ta-welcome) #identifyDetail.open{display:grid!important;z-index:10020}
+#identifyDetail .ta-definition-card{display:block}
+.workflow-open-detail{cursor:pointer}
 </style>
 </head>
 <body class="intro-open ta-welcome">
