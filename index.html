@@ -70,6 +70,11 @@ body:not(.ta-welcome) .footer{display:none!important}
 @media(max-width:760px){.workflow-cards{grid-template-columns:1fr}.workflow-art{height:auto}}
 
 
+.workflow-open-detail{cursor:pointer}
+.workflow-open-detail:focus-visible{outline:4px solid #438fc4;outline-offset:-4px}
+.identify-detail-card{width:min(820px,100%)}
+.identify-detail-card ul{padding-left:26px;margin:8px 0 20px;color:#183443}
+.identify-detail-card li{padding:4px 0;font-size:1.02rem;line-height:1.6}
 </style>
 </head>
 <body class="intro-open ta-welcome">
@@ -173,11 +178,31 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
     <button class="btn" id="taDefinitionContinue" type="button">CONTINUAR →</button>
   </div>
 </div>
+<div class="ta-definition" id="identifyDetail" role="dialog" aria-modal="true" aria-labelledby="identifyDetailTitle">
+  <div class="ta-definition-card identify-detail-card">
+    <button class="ta-definition-close" id="identifyDetailClose" type="button" aria-label="Fechar">×</button>
+    <h2 id="identifyDetailTitle">1. IDENTIFIQUE</h2>
+    <p><strong>1. → Identifique a necessidade antes de escolher o recurso:</strong> Observe o estudante durante a atividade e pergunte-se:</p>
+    <ul>
+      <li>Qual atividade apresenta dificuldade?</li>
+      <li>O que está dificultando sua participação?</li>
+      <li>Que apoio ele já utiliza?</li>
+    </ul>
+    <p><strong>2. → Busque recursos que possam responder à necessidade observada.</strong> Escolha possibilidades, não uma solução definitiva. Para isso, considere:</p>
+    <ul>
+      <li>A dificuldade apresentada;</li>
+      <li>A atividade que será realizada;</li>
+      <li>As características do estudante;</li>
+      <li>Recursos disponíveis na escola.</li>
+    </ul>
+    <button class="btn" id="identifyDetailBack" type="button">VOLTAR →</button>
+  </div>
+</div>
 <section id="inicio" class="panel active">
 <div class="section-head"><div><h2>COMO UTILIZAR</h2><p>Conheça as quatro etapas para identificar barreiras e experimentar recursos de Tecnologia Assistiva.</p></div></div>
 <div class="workflow-cards">
 <article class="workflow-card">
-<img class="workflow-art" src="imagens/identifique.png" alt="Ilustração de professora observando uma atividade com criança" loading="eager">
+<img class="workflow-art workflow-open-detail" id="openIdentifyDetail" src="imagens/identifique.png" alt="Ilustração de professora observando uma atividade com criança. Clique para ver as orientações da etapa Identifique." loading="eager" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="identifyDetail">
 <span>Comece pela atividade que o estudante precisa realizar. Observe o que está dificultando a tarefa: segurar o lápis, alcançar o material, controlar movimentos ou utilizar um dispositivo. Descreva a barreira observável, sem informar diagnóstico.</span>
 </article>
 <article class="workflow-card">
@@ -293,6 +318,16 @@ $("#exportJson").addEventListener("click",()=>download("registros-teste-ta.json"
 $("#exportCsv").addEventListener("click",()=>{const rows=getRecords();if(!rows.length){alert("Ainda não há registros para exportar.");return}const keys=["data","atividade","recurso","apoio","facilitou","autonomia","participacao","observacoes","decisao"];const csv=[keys.join(";"),...rows.map(r=>keys.map(k=>csvCell(r[k])).join(";"))].join("\\r\\n");download("registros-teste-ta.csv","\ufeff"+csv,"text/csv;charset=utf-8")});
 $("#testResource").innerHTML+='<option disabled>— Escolha um recurso para testar —</option>'+resources.map(r=>`<option value="${r.id}">${escapeHtml(r.name)}</option>`).join("");
 $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
+
+const identifyDetail=document.getElementById("identifyDetail");
+const openIdentifyDetail=document.getElementById("openIdentifyDetail");
+function showIdentifyDetail(){identifyDetail.classList.add("open");document.body.style.overflow="hidden";document.getElementById("identifyDetailClose").focus();}
+function hideIdentifyDetail(){identifyDetail.classList.remove("open");document.body.style.overflow="";openIdentifyDetail.focus();}
+openIdentifyDetail.addEventListener("click",showIdentifyDetail);
+openIdentifyDetail.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showIdentifyDetail();}});
+document.getElementById("identifyDetailClose").addEventListener("click",hideIdentifyDetail);
+document.getElementById("identifyDetailBack").addEventListener("click",hideIdentifyDetail);
+identifyDetail.addEventListener("click",e=>{if(e.target===identifyDetail)hideIdentifyDetail();});
 
 const taDefinition=document.getElementById("taDefinition");
 function closeTaDefinition(){taDefinition.classList.remove("open");document.body.style.overflow="";}
