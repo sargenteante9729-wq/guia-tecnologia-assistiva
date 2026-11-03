@@ -45,9 +45,20 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.top{background:
 @media(max-width:850px){.workflow-cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:540px){.workflow-cards{grid-template-columns:1fr}.ta-intro-banner img{height:auto;min-height:0;object-fit:contain}.ta-intro-banner .banner-cta{right:12px;bottom:12px;font-size:.8rem}.ta-definition-card{padding:24px 20px}}
 
+
+/* Fluxo inicial em etapas: título e capa, definição e depois orientação */
+body.ta-welcome .nav,body.ta-welcome .panel,body.ta-welcome .footer{display:none!important}
+body.ta-welcome .ta-intro-banner{margin-bottom:26px}
+.workflow-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.workflow-card{min-height:190px;padding:22px;border-width:2px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.workflow-card:hover{transform:translateY(-4px);border-color:#438fc4;box-shadow:0 12px 26px #123b5020}
+.workflow-card b{font-size:1.08rem}
+.workflow-card span:not(.workflow-icon){display:block;line-height:1.55}
+@media(max-width:650px){.workflow-cards{grid-template-columns:1fr}.workflow-card{min-height:0}}
+
 </style>
 </head>
-<body class="intro-open">
+<body class="intro-open ta-welcome">
 
 <style>
 /* Abertura em vídeo — identidade visual própria do Guia de Tecnologia Assistiva */
@@ -152,7 +163,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 <button class="active" data-tab="inicio">Início</button><button data-tab="encontrar">Encontrar recursos</button><button data-tab="testar">Teste e registre</button><button data-tab="orientacoes">Como utilizar</button>
 </nav>
 <section id="inicio" class="panel active">
-<div class="intro"><div class="hero"><div class="eyebrow">Descobrir · Experimentar · Avaliar</div><h2>Tecnologia Assistiva na palma da mão</h2><p>Identifique a atividade escolar, observe a barreira funcional e explore recursos que podem favorecer o acesso, a participação, a aprendizagem e a autonomia do estudante.</p><div class="principle">Não é necessário identificar a deficiência. Comece pelo que o estudante precisa fazer e pelo que está dificultando a atividade.</div><div class="actions"><button class="btn" data-go="encontrar">Encontrar uma possibilidade →</button></div></div><div class="card"><h3>Como funciona</h3><div class="workflow-cards"><div class="workflow-card"><span class="workflow-icon">◎</span><b>1. Identifique</b><span>Atividade e dificuldade observada.</span></div><div class="workflow-card"><span class="workflow-icon">⌕</span><b>2. Explore</b><span>Conheça recursos possíveis.</span></div><div class="workflow-card"><span class="workflow-icon">▶</span><b>3. Experimente</b><span>Teste em uma tarefa real.</span></div><div class="workflow-card"><span class="workflow-icon">✓</span><b>4. Registre</b><span>Decida manter, ajustar ou substituir.</span></div></div></div></div>
+<div class="intro"><div class="hero"><div class="eyebrow">Descobrir · Experimentar · Avaliar</div><h2>Tecnologia Assistiva na palma da mão</h2><p>Identifique a atividade escolar, observe a barreira funcional e explore recursos que podem favorecer o acesso, a participação, a aprendizagem e a autonomia do estudante.</p><div class="principle">Não é necessário identificar a deficiência. Comece pelo que o estudante precisa fazer e pelo que está dificultando a atividade.</div><div class="actions"><button class="btn" data-go="encontrar">Encontrar uma possibilidade →</button></div></div><div class="card"><h3>Como funciona</h3><p class="muted">O guia organiza a busca e a experimentação em quatro etapas. Avance no seu ritmo e observe a resposta do estudante em atividades reais.</p><div class="workflow-cards"><article class="workflow-card"><span class="workflow-icon">◎</span><b>1. IDENTIFIQUE</b><span>Comece pela atividade que o estudante precisa realizar. Observe o que está dificultando essa tarefa: segurar o lápis, alcançar o material, controlar movimentos, estabilizar a folha ou utilizar um dispositivo. Descreva a barreira observável, sem precisar informar diagnóstico.</span></article><article class="workflow-card"><span class="workflow-icon">⌕</span><b>2. EXPLORE</b><span>Consulte as possibilidades sugeridas pelo guia. Conheça a finalidade de cada recurso, como pode ser utilizado, quais adaptações exige e se está disponível na escola. Considere alternativas simples e recursos digitais ou especializados.</span></article><article class="workflow-card"><span class="workflow-icon">▶</span><b>3. EXPERIMENTE</b><span>Escolha uma possibilidade e teste em uma tarefa pedagógica real. Explique e demonstre o uso, ajuste o posicionamento e ofereça o apoio necessário. Observe conforto, acesso à atividade, participação e autonomia, sem apressar o estudante.</span></article><article class="workflow-card"><span class="workflow-icon">✓</span><b>4. REGISTRE</b><span>Anote o recurso utilizado e o resultado observado. Se facilitou a atividade, avalie mantê-lo; se ajudou parcialmente, faça ajustes; se não funcionou ou causou desconforto, substitua por outra possibilidade e registre a decisão.</span></article></div></div></div>
 <div class="section-head"><div><h2>Princípios orientadores</h2><p>O recurso é uma possibilidade inicial, não uma solução automática.</p></div></div>
 <div class="steps"><div class="step"><b>Finalidade clara</b><span>Saiba o que o recurso pretende facilitar.</span></div><div class="step"><b>Ajuste individual</b><span>Considere atividade, conforto, alcance e recursos disponíveis.</span></div><div class="step"><b>Mediação adequada</b><span>Demonstre, dê tempo e ofereça apenas a ajuda necessária.</span></div><div class="step"><b>Avaliação prática</b><span>Observe realização, participação e autonomia.</span></div></div>
 <div class="notice"><strong>Importante:</strong> os resultados apresentados pelo guia são sugestões para orientar a experimentação. Verifique conforto, posicionamento e segurança; se necessário, solicite orientação especializada.</div>
@@ -262,7 +273,7 @@ function closeTaDefinition(){taDefinition.classList.remove("open");document.body
 function openTaDefinition(){taDefinition.classList.add("open");document.body.style.overflow="hidden";}
 document.getElementById("taDefinitionOpen").addEventListener("click",openTaDefinition);
 document.getElementById("taDefinitionClose").addEventListener("click",closeTaDefinition);
-document.getElementById("taDefinitionContinue").addEventListener("click",closeTaDefinition);
+document.getElementById("taDefinitionContinue").addEventListener("click",()=>{closeTaDefinition();document.body.classList.remove("ta-welcome");document.querySelector("#inicio").scrollIntoView({behavior:"smooth",block:"start"});});
 taDefinition.addEventListener("click",e=>{if(e.target===taDefinition)closeTaDefinition()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeTaDefinition()});
 
