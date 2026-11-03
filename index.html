@@ -18,11 +18,13 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.top{background:
 :focus-visible{outline:3px solid #f5b800;outline-offset:2px}
 
 /* Bloco de abertura interativo e cards pedagógicos por etapa */
-.ta-intro-banner{display:block;position:relative;width:100%;margin:0 0 24px;padding:0;border:3px solid #438fc4;border-radius:22px;overflow:hidden;background:#123b50;box-shadow:0 12px 30px #123b5024;cursor:pointer;text-align:left}
-.ta-intro-banner img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;transition:transform .35s ease}
-.ta-intro-banner:hover img{transform:none}
+.ta-intro-banner{display:block;position:relative;width:min(100%,980px);margin:0 auto 24px;padding:0;border:3px solid #438fc4;border-radius:22px;overflow:hidden;background:#123b50;box-shadow:0 12px 30px #123b5024;cursor:pointer;text-align:left}
+.ta-intro-banner img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;transition:filter .25s ease}
+.ta-intro-banner:hover img{animation:taImagePulse 1.05s ease-in-out infinite alternate;filter:brightness(1.035)}
+@keyframes taImagePulse{from{transform:scale(1)}to{transform:scale(1.018)}}
 .ta-intro-banner:focus-visible{outline:4px solid #438fc4;outline-offset:4px}
-.ta-intro-banner .banner-cta{position:absolute;right:22px;bottom:18px;padding:10px 17px;border-radius:999px;background:#123b50;color:#fff;font-weight:900;letter-spacing:.04em;box-shadow:0 4px 15px #061d3d55}
+.ta-intro-banner .banner-cta{display:none}
+@media(max-width:600px){.ta-intro-banner{width:100%;margin-bottom:18px}}
 .ta-definition{position:fixed;inset:0;z-index:10010;display:none;place-items:center;padding:20px;background:#071e32b8;backdrop-filter:blur(5px)}
 .ta-definition.open{display:grid}
 .ta-definition-card{position:relative;width:min(760px,100%);max-height:88vh;overflow:auto;padding:30px;border:2px solid #8db8d5;border-radius:22px;background:linear-gradient(145deg,#fff,#eaf4fb);box-shadow:0 20px 60px #061d3d55;color:#183443}
@@ -135,7 +137,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 <main class="wrap">
 <button class="ta-intro-banner" id="taDefinitionOpen" type="button" aria-haspopup="dialog" aria-controls="taDefinition">
   <img src="imagens/Vamos_%20Come%C3%A7ar.png" alt="Estudantes e educadores utilizando recursos de Tecnologia Assistiva em uma sala de aula inclusiva">
-  <span class="banner-cta">VAMOS COMEÇAR →</span>
+  
 </button>
 <div class="ta-definition" id="taDefinition" role="dialog" aria-modal="true" aria-labelledby="taDefinitionTitle">
   <div class="ta-definition-card">
