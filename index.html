@@ -79,6 +79,16 @@ body:not(.ta-welcome) .footer{display:none!important}
 body:not(.ta-welcome) #identifyDetail.open{display:grid!important;z-index:10020}
 #identifyDetail .ta-definition-card{display:block}
 .workflow-open-detail{cursor:pointer}
+
+/* Correção de visibilidade das telas e rolagem da página */
+body:not(.ta-welcome){overflow-x:hidden!important;overflow-y:auto!important}
+body:not(.ta-welcome) #identifyDetail.open,
+body:not(.ta-welcome) #exploreDetail.open,
+body:not(.ta-welcome) #experimentDetail.open,
+body:not(.ta-welcome) #recordDetail.open{display:grid!important;z-index:10020}
+body:not(.ta-welcome) .ta-definition:not(.open){display:none!important}
+.workflow-cards{padding-bottom:36px}
+.workflow-card{height:auto}
 </style>
 </head>
 <body class="intro-open ta-welcome">
@@ -372,6 +382,7 @@ $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
   const close=()=>{
     dialog.classList.remove("open");
     document.body.style.overflow="";
+    document.body.classList.remove("intro-open");
     trigger.focus();
   };
   const open=()=>{
@@ -391,7 +402,7 @@ $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
 const identifyDetail=document.getElementById("identifyDetail");
 const openIdentifyDetail=document.getElementById("openIdentifyDetail");
 function showIdentifyDetail(){identifyDetail.classList.add("open");document.body.style.overflow="hidden";document.getElementById("identifyDetailClose").focus();}
-function hideIdentifyDetail(){identifyDetail.classList.remove("open");document.body.style.overflow="";openIdentifyDetail.focus();}
+function hideIdentifyDetail(){identifyDetail.classList.remove("open");document.body.style.overflow="";document.body.classList.remove("intro-open");openIdentifyDetail.focus();}
 openIdentifyDetail.addEventListener("click",showIdentifyDetail);
 openIdentifyDetail.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showIdentifyDetail();}});
 document.getElementById("identifyDetailClose").addEventListener("click",hideIdentifyDetail);
@@ -399,7 +410,7 @@ document.getElementById("identifyDetailBack").addEventListener("click",hideIdent
 identifyDetail.addEventListener("click",e=>{if(e.target===identifyDetail)hideIdentifyDetail();});
 
 const taDefinition=document.getElementById("taDefinition");
-function closeTaDefinition(){taDefinition.classList.remove("open");document.body.style.overflow="";}
+function closeTaDefinition(){taDefinition.classList.remove("open");document.body.style.overflow="";document.body.classList.remove("intro-open");}
 function openTaDefinition(){taDefinition.classList.add("open");document.body.style.overflow="hidden";}
 document.getElementById("taDefinitionOpen").addEventListener("click",openTaDefinition);
 document.getElementById("taDefinitionClose").addEventListener("click",closeTaDefinition);
