@@ -27,10 +27,10 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}.top{background:
 @media(max-width:600px){.ta-intro-banner{width:100%;margin-bottom:18px}}
 .ta-definition{position:fixed;inset:0;z-index:10010;display:none;place-items:center;padding:20px;background:rgba(7,30,50,.34);backdrop-filter:blur(9px) saturate(135%);-webkit-backdrop-filter:blur(9px) saturate(135%)}
 .ta-definition.open{display:grid}
-.ta-definition-card{position:relative;width:min(760px,100%);max-height:88vh;overflow:auto;padding:30px;border:1px solid rgba(255,255,255,.78);border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(224,242,255,.58));backdrop-filter:blur(24px) saturate(165%);-webkit-backdrop-filter:blur(24px) saturate(165%);box-shadow:0 22px 65px rgba(3,25,48,.28),inset 0 1px 0 rgba(255,255,255,.8);color:#183443}
-.ta-definition-card h2{margin:0 42px 16px 0;color:#123b50}
-.ta-definition-card p{font-size:1.04rem;line-height:1.75}
-.ta-definition-close{position:absolute;right:16px;top:14px;width:38px;height:38px;border:1px solid #b8d0e0;border-radius:50%;background:#fff;color:#123b50;font-size:24px;cursor:pointer}
+.ta-definition-card{position:relative;width:min(760px,100%);max-height:88vh;overflow:auto;padding:30px;border:1px solid rgba(255,255,255,.48);border-radius:24px;background:linear-gradient(125deg,rgba(12,38,67,.70),rgba(22,79,112,.48) 52%,rgba(35,45,91,.58));backdrop-filter:blur(18px) saturate(175%);-webkit-backdrop-filter:blur(18px) saturate(175%);box-shadow:0 24px 70px rgba(0,12,32,.42),inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.12);color:#f4fbff}
+.ta-definition-card h2{margin:0 42px 16px 0;color:#bceaff;text-shadow:0 2px 16px rgba(90,190,255,.28)}
+.ta-definition-card p{font-size:1.04rem;line-height:1.75;color:#f2f8ff}.ta-definition-card strong{color:#fff}
+.ta-definition-close{position:absolute;right:16px;top:14px;width:38px;height:38px;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);color:#fff;font-size:24px;cursor:pointer}
 .workflow-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 22px}
 .workflow-card{min-height:150px;padding:18px;border:2px solid #b8d0e0;border-radius:18px;background:linear-gradient(155deg,#fff,#eaf4fb);box-shadow:0 7px 20px #123b5012}
 .workflow-card .workflow-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:12px;border-radius:13px;background:#d8ebf8;color:#174f70;font-size:22px}
@@ -73,8 +73,8 @@ body:not(.ta-welcome) .footer{display:none!important}
 .workflow-open-detail{cursor:pointer}
 .workflow-open-detail:focus-visible{outline:4px solid #438fc4;outline-offset:-4px}
 .identify-detail-card{width:min(820px,100%)}
-.identify-detail-card ul{padding-left:26px;margin:8px 0 20px;color:#183443}
-.identify-detail-card li{padding:4px 0;font-size:1.02rem;line-height:1.6}
+.identify-detail-card ul{padding-left:26px;margin:8px 0 20px;color:#f2f8ff}
+.identify-detail-card li{padding:4px 0;font-size:1.02rem;line-height:1.6;color:#f2f8ff}
 /* A janela IDENTIFIQUE precisa permanecer visível mesmo após sair da tela de boas-vindas */
 body:not(.ta-welcome) #identifyDetail.open{display:grid!important;z-index:10020}
 #identifyDetail .ta-definition-card{display:block}
