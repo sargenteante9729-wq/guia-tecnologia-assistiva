@@ -202,6 +202,43 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
     <button class="btn" id="identifyDetailBack" type="button">VOLTAR →</button>
   </div>
 </div>
+<div class="ta-definition" id="exploreDetail" role="dialog" aria-modal="true" aria-labelledby="exploreDetailTitle">
+  <div class="ta-definition-card identify-detail-card">
+    <button class="ta-definition-close" type="button" aria-label="Fechar" data-detail-close="exploreDetail">×</button>
+    <h2 id="exploreDetailTitle">2. EXPLORE</h2>
+    <p><strong>1. → Pesquise possibilidades de Tecnologia Assistiva:</strong> Após identificar a necessidade, explore recursos que possam facilitar a participação do estudante. Conheça diferentes alternativas e suas funcionalidades.</p>
+    <p>Considere:</p>
+    <ul><li>Recursos de baixa, média e alta tecnologia;</li><li>Adaptações de materiais escolares;</li><li>Recursos de comunicação alternativa;</li><li>Aplicativos e ferramentas digitais;</li><li>Recursos disponíveis na própria escola.</li></ul>
+    <p><strong>2. → Analise qual recurso pode atender à necessidade identificada.</strong> Antes de escolher, pergunte-se:</p>
+    <ul><li>O recurso facilita a realização da atividade?</li><li>É adequado às características do estudante?</li><li>É de fácil utilização?</li><li>Está disponível ou pode ser confeccionado?</li><li>Necessita de adaptação ou orientação específica?</li></ul>
+    <button class="btn" type="button" data-detail-close="exploreDetail">VOLTAR →</button>
+  </div>
+</div>
+<div class="ta-definition" id="experimentDetail" role="dialog" aria-modal="true" aria-labelledby="experimentDetailTitle">
+  <div class="ta-definition-card identify-detail-card">
+    <button class="ta-definition-close" type="button" aria-label="Fechar" data-detail-close="experimentDetail">×</button>
+    <h2 id="experimentDetailTitle">3. EXPERIMENTE</h2>
+    <p><strong>1. → Experimente o recurso em uma atividade real:</strong> Apresente o recurso ao estudante e permita que ele experimente sua utilização. O objetivo é verificar se a tecnologia realmente contribui para superar a barreira identificada.</p>
+    <p>Durante a experimentação:</p>
+    <ul><li>Explique como utilizar o recurso;</li><li>Demonstre seu funcionamento;</li><li>Ajuste o posicionamento e as configurações;</li><li>Ofereça o apoio necessário;</li><li>Permita que o estudante participe ativamente.</li></ul>
+    <p><strong>2. → Observe os resultados da experimentação.</strong> Pergunte-se:</p>
+    <ul><li>O estudante conseguiu realizar a atividade?</li><li>Houve melhora na participação?</li><li>O recurso proporcionou maior autonomia?</li><li>Foi confortável e fácil de utilizar?</li><li>São necessários novos ajustes?</li></ul>
+    <button class="btn" type="button" data-detail-close="experimentDetail">VOLTAR →</button>
+  </div>
+</div>
+<div class="ta-definition" id="recordDetail" role="dialog" aria-modal="true" aria-labelledby="recordDetailTitle">
+  <div class="ta-definition-card identify-detail-card">
+    <button class="ta-definition-close" type="button" aria-label="Fechar" data-detail-close="recordDetail">×</button>
+    <h2 id="recordDetailTitle">4. REGISTRE</h2>
+    <p><strong>1. → Registre a experiência realizada:</strong> Documente a utilização do recurso de Tecnologia Assistiva, descrevendo a atividade desenvolvida e os resultados observados.</p>
+    <p>Registre:</p>
+    <ul><li>Qual recurso foi utilizado;</li><li>Qual necessidade motivou sua escolha;</li><li>Em qual atividade foi aplicado;</li><li>Como ocorreu a utilização;</li><li>Quais dificuldades foram observadas.</li></ul>
+    <p><strong>2. → Avalie os resultados e planeje os próximos passos.</strong> Considere:</p>
+    <ul><li>O recurso atendeu à necessidade identificada?</li><li>Houve melhora na participação e autonomia?</li><li>O estudante conseguiu utilizar o recurso com independência?</li><li>São necessárias adaptações?</li><li>O recurso deve ser mantido, substituído ou aperfeiçoado?</li></ul>
+    <p><strong>3. → Utilize os registros para orientar novas decisões.</strong> O acompanhamento permite verificar a evolução do estudante, aperfeiçoar as estratégias pedagógicas e identificar novas possibilidades de Tecnologia Assistiva.</p>
+    <button class="btn" type="button" data-detail-close="recordDetail">VOLTAR →</button>
+  </div>
+</div>
 <section id="inicio" class="panel active">
 <div class="section-head"><div><h2>COMO UTILIZAR</h2><p>Conheça as quatro etapas para identificar barreiras e experimentar recursos de Tecnologia Assistiva.</p></div></div>
 <div class="workflow-cards">
@@ -210,15 +247,15 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 <span>Comece pela atividade que o estudante precisa realizar. Observe o que está dificultando a tarefa: segurar o lápis, alcançar o material, controlar movimentos ou utilizar um dispositivo. Descreva a barreira observável, sem informar diagnóstico.</span>
 </article>
 <article class="workflow-card">
-<img class="workflow-art" src="imagens/explore.png" alt="Criança conhecendo recursos de acessibilidade em um tablet" loading="eager">
+<img class="workflow-art workflow-open-detail" id="openExploreDetail" src="imagens/explore.png" alt="Criança conhecendo recursos de acessibilidade em um tablet. Clique para ver as orientações da etapa Explore." loading="eager" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="exploreDetail">
 <span>Consulte as possibilidades sugeridas pelo guia. Conheça a finalidade de cada recurso, como pode ser utilizado, quais adaptações exige e se está disponível na escola. Considere alternativas simples, digitais ou especializadas.</span>
 </article>
 <article class="workflow-card">
-<img class="workflow-art" src="imagens/experimente.png" alt="Criança utilizando recurso assistivo em atividade escolar" loading="eager">
+<img class="workflow-art workflow-open-detail" id="openExperimentDetail" src="imagens/experimente.png" alt="Criança utilizando recurso assistivo em atividade escolar. Clique para ver as orientações da etapa Experimente." loading="eager" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="experimentDetail">
 <span>Escolha uma possibilidade e teste em uma tarefa pedagógica real. Demonstre o uso, ajuste o posicionamento e ofereça o apoio necessário. Observe conforto, acesso à atividade, participação e autonomia.</span>
 </article>
 <article class="workflow-card">
-<img class="workflow-art" src="imagens/registre.png" alt="Professor avaliando os resultados enquanto a criança acompanha" loading="eager">
+<img class="workflow-art workflow-open-detail" id="openRecordDetail" src="imagens/registre.png" alt="Professor avaliando os resultados enquanto a criança acompanha. Clique para ver as orientações da etapa Registre." loading="eager" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="recordDetail">
 <span>Anote o recurso utilizado e o resultado observado. Se facilitou a atividade, avalie mantê-lo; se ajudou parcialmente, ajuste; se não funcionou ou causou desconforto, substitua por outra possibilidade e registre a decisão.</span>
 </article>
 </div>
@@ -322,6 +359,34 @@ $("#exportJson").addEventListener("click",()=>download("registros-teste-ta.json"
 $("#exportCsv").addEventListener("click",()=>{const rows=getRecords();if(!rows.length){alert("Ainda não há registros para exportar.");return}const keys=["data","atividade","recurso","apoio","facilitou","autonomia","participacao","observacoes","decisao"];const csv=[keys.join(";"),...rows.map(r=>keys.map(k=>csvCell(r[k])).join(";"))].join("\\r\\n");download("registros-teste-ta.csv","\ufeff"+csv,"text/csv;charset=utf-8")});
 $("#testResource").innerHTML+='<option disabled>— Escolha um recurso para testar —</option>'+resources.map(r=>`<option value="${r.id}">${escapeHtml(r.name)}</option>`).join("");
 $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
+
+
+// Telas de orientação das etapas 2, 3 e 4
+[
+  ["openExploreDetail","exploreDetail"],
+  ["openExperimentDetail","experimentDetail"],
+  ["openRecordDetail","recordDetail"]
+].forEach(([triggerId,dialogId])=>{
+  const trigger=document.getElementById(triggerId);
+  const dialog=document.getElementById(dialogId);
+  const close=()=>{
+    dialog.classList.remove("open");
+    document.body.style.overflow="";
+    trigger.focus();
+  };
+  const open=()=>{
+    dialog.classList.add("open");
+    document.body.style.overflow="hidden";
+    dialog.querySelector(".ta-definition-close").focus();
+  };
+  trigger.addEventListener("click",open);
+  trigger.addEventListener("keydown",e=>{
+    if(e.key==="Enter"||e.key===" "){e.preventDefault();open();}
+  });
+  dialog.querySelectorAll('[data-detail-close="'+dialogId+'"]').forEach(button=>button.addEventListener("click",close));
+  dialog.addEventListener("click",e=>{if(e.target===dialog)close();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&dialog.classList.contains("open"))close();});
+});
 
 const identifyDetail=document.getElementById("identifyDetail");
 const openIdentifyDetail=document.getElementById("openIdentifyDetail");
