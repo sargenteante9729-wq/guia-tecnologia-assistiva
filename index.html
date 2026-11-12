@@ -93,6 +93,21 @@ body:not(.ta-welcome) .ta-definition:not(.open){display:none!important}
 .resource-suggestions-card{width:100%;margin:8px 0 34px;padding:24px 28px;border:2px solid #b8d0e0;border-radius:20px;background:linear-gradient(135deg,#fff,#eaf4fb);box-shadow:0 8px 22px #123b5014;text-align:left}
 .resource-suggestions-card h2{margin:0;color:#123b50;font-size:clamp(1.05rem,2.2vw,1.45rem);font-weight:900;letter-spacing:.025em}
 @media(max-width:600px){.resource-suggestions-card{padding:20px}}
+.resource-suggestions-card{display:flex;align-items:center;gap:20px;width:100%;margin:8px 0 34px;padding:14px;border:2px solid #b8d0e0;border-radius:20px;background:linear-gradient(135deg,#fff,#eaf4fb);box-shadow:0 8px 22px #123b5014;text-align:left;cursor:pointer;color:#123b50;transition:transform .2s ease,box-shadow .2s ease}
+.resource-suggestions-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px #123b5025;border-color:#438fc4}
+.resource-suggestions-card img{display:block;width:clamp(110px,22%,210px);height:130px;object-fit:cover;object-position:center;border-radius:14px}
+.resource-suggestions-copy{display:flex;flex:1;flex-direction:column;gap:9px}
+.resource-suggestions-copy strong{font-size:clamp(1rem,2.1vw,1.35rem);font-weight:900;line-height:1.35}
+.resource-suggestions-copy small{font-size:.94rem;color:#526e80}
+.resource-suggestions-arrow{font-size:2rem;font-weight:900;color:#23698f;padding:0 16px}
+.resource-dialog-card{width:min(900px,100%)}
+.resource-choice-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.resource-choice-list details{border:1px solid rgba(255,255,255,.38);border-radius:14px;background:rgba(255,255,255,.09);padding:14px 16px}
+.resource-choice-list summary{cursor:pointer;color:#c8edff;font-weight:850;line-height:1.4}
+.resource-choice-list ul{padding-left:22px;margin:12px 0 4px;color:#f2f8ff}
+.resource-choice-list li{padding:4px 0;line-height:1.5}
+.resource-dialog-note{padding:14px 16px;border:1px solid rgba(255,255,255,.28);border-radius:12px;background:rgba(255,255,255,.08)}
+@media(max-width:650px){.resource-suggestions-card{gap:12px}.resource-suggestions-card img{width:100px;height:100px}.resource-suggestions-arrow{padding:0 5px}.resource-choice-list{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="intro-open ta-welcome">
@@ -273,9 +288,31 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 <span>Anote o recurso utilizado e o resultado observado. Se facilitou a atividade, avalie mantê-lo; se ajudou parcialmente, ajuste; se não funcionou ou causou desconforto, substitua por outra possibilidade e registre a decisão.</span>
 </article>
 </div>
-<article class="resource-suggestions-card" aria-labelledby="resourceSuggestionsTitle">
-  <h2 id="resourceSuggestionsTitle">SUGESTÕES DOS RECURSOS DE TECNOLOGIA ASSISTIVA</h2>
-</article>
+<button class="resource-suggestions-card" id="openResourceSuggestions" type="button" aria-haspopup="dialog" aria-controls="resourceSuggestionsDialog">
+  <img src="imagens/imagem-formacao.png" alt="Ilustração sobre recursos e tecnologias assistivas">
+  <span class="resource-suggestions-copy">
+    <strong id="resourceSuggestionsTitle">SUGESTÕES DOS RECURSOS DE TECNOLOGIA ASSISTIVA</strong>
+    <small>Toque para conhecer e escolher possibilidades de recursos</small>
+  </span>
+  <span class="resource-suggestions-arrow" aria-hidden="true">→</span>
+</button>
+<div class="ta-definition" id="resourceSuggestionsDialog" role="dialog" aria-modal="true" aria-labelledby="resourceSuggestionsDialogTitle">
+  <div class="ta-definition-card identify-detail-card resource-dialog-card">
+    <button class="ta-definition-close" id="closeResourceSuggestions" type="button" aria-label="Fechar">×</button>
+    <h2 id="resourceSuggestionsDialogTitle">ESCOLHA UMA CATEGORIA DE TECNOLOGIA ASSISTIVA</h2>
+    <p>Selecione a área para conhecer exemplos de recursos que podem apoiar a participação, a aprendizagem e a autonomia do estudante. A escolha deve considerar a necessidade observada e ser testada na atividade real.</p>
+    <div class="resource-choice-list">
+      <details><summary>COMUNICAÇÃO E LINGUAGEM</summary><ul><li>Pranchas de comunicação com símbolos ou imagens;</li><li>Cartões de comunicação e rotinas visuais;</li><li>Aplicativos de comunicação alternativa e aumentativa;</li><li>Comunicadores com voz sintetizada.</li></ul></details>
+      <details><summary>LEITURA E ACESSO À INFORMAÇÃO</summary><ul><li>Livros digitais acessíveis e audiolivros;</li><li>Leitores de tela e ampliadores de texto;</li><li>Réguas de leitura e materiais com contraste ampliado;</li><li>Textos em formatos acessíveis.</li></ul></details>
+      <details><summary>ESCRITA E REGISTRO</summary><ul><li>Engrossadores e adaptadores de lápis;</li><li>Pranchetas inclinadas e suportes para papel;</li><li>Teclados ampliados ou alternativos;</li><li>Reconhecimento de voz para produção de texto.</li></ul></details>
+      <details><summary>ACESSO AO COMPUTADOR E TABLET</summary><ul><li>Acionadores e teclados adaptados;</li><li>Mouse adaptado, trackball e ponteiras;</li><li>Comandos por toque, voz ou movimentos da cabeça;</li><li>Suportes e bases para dispositivos.</li></ul></details>
+      <details><summary>MOBILIDADE, POSTURA E POSICIONAMENTO</summary><ul><li>Cadeiras e sistemas de posicionamento;</li><li>Mesas adaptadas e planos inclinados;</li><li>Suportes para membros e estabilizadores;</li><li>Adaptações para alcance e acesso aos materiais.</li></ul></details>
+      <details><summary>VISÃO E AUDIÇÃO</summary><ul><li>Lupas, ampliadores e materiais táteis;</li><li>Linhas e sinalizadores em alto contraste;</li><li>Recursos de audiodescrição e legendas;</li><li>Sistemas de amplificação sonora e alertas visuais.</li></ul></details>
+      <details><summary>MANIPULAÇÃO E ATIVIDADES PEDAGÓGICAS</summary><ul><li> engrossadores, estabilizadores e fixadores de materiais;</li><li>Tesouras adaptadas e materiais de fácil preensão;</li><li>Jogos pedagógicos acessíveis;</li><li>Adaptadores para pintura, desenho e atividades manuais.</li></ul></details>
+    </div>
+    <p class="resource-dialog-note"><strong>Importante:</strong> estes são exemplos para exploração inicial, não indicações individuais. Avalie a adequação, a segurança, o conforto e a preferência do estudante; quando necessário, busque orientação de profissionais especializados.</p>
+  </div>
+</div>
 </section>
 <section id="encontrar" class="panel">
 <div class="section-head"><div><h2>Encontre recursos para uma atividade</h2><p>Responda às três perguntas. Não informe diagnóstico ou nome do estudante.</p></div></div>
@@ -405,6 +442,15 @@ $("#testDate").value=new Date().toISOString().slice(0,10);renderRecords();
   dialog.addEventListener("click",e=>{if(e.target===dialog)close();});
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&dialog.classList.contains("open"))close();});
 });
+
+const resourceSuggestionsDialog=document.getElementById("resourceSuggestionsDialog");
+const openResourceSuggestions=document.getElementById("openResourceSuggestions");
+function showResourceSuggestions(){resourceSuggestionsDialog.classList.add("open");document.body.style.overflow="hidden";document.getElementById("closeResourceSuggestions").focus();}
+function hideResourceSuggestions(){resourceSuggestionsDialog.classList.remove("open");document.body.style.overflow="";document.body.classList.remove("intro-open");openResourceSuggestions.focus();}
+openResourceSuggestions.addEventListener("click",showResourceSuggestions);
+document.getElementById("closeResourceSuggestions").addEventListener("click",hideResourceSuggestions);
+resourceSuggestionsDialog.addEventListener("click",e=>{if(e.target===resourceSuggestionsDialog)hideResourceSuggestions();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&resourceSuggestionsDialog.classList.contains("open"))hideResourceSuggestions();});
 
 const identifyDetail=document.getElementById("identifyDetail");
 const openIdentifyDetail=document.getElementById("openIdentifyDetail");
