@@ -89,6 +89,10 @@ body:not(.ta-welcome) #recordDetail.open{display:grid!important;z-index:10020}
 body:not(.ta-welcome) .ta-definition:not(.open){display:none!important}
 .workflow-cards{padding-bottom:36px}
 .workflow-card{height:auto}
+
+.resource-suggestions-card{width:100%;margin:8px 0 34px;padding:24px 28px;border:2px solid #b8d0e0;border-radius:20px;background:linear-gradient(135deg,#fff,#eaf4fb);box-shadow:0 8px 22px #123b5014;text-align:left}
+.resource-suggestions-card h2{margin:0;color:#123b50;font-size:clamp(1.05rem,2.2vw,1.45rem);font-weight:900;letter-spacing:.025em}
+@media(max-width:600px){.resource-suggestions-card{padding:20px}}
 </style>
 </head>
 <body class="intro-open ta-welcome">
@@ -269,6 +273,9 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 <span>Anote o recurso utilizado e o resultado observado. Se facilitou a atividade, avalie mantê-lo; se ajudou parcialmente, ajuste; se não funcionou ou causou desconforto, substitua por outra possibilidade e registre a decisão.</span>
 </article>
 </div>
+<article class="resource-suggestions-card" aria-labelledby="resourceSuggestionsTitle">
+  <h2 id="resourceSuggestionsTitle">SUGESTÕES DOS RECURSOS DE TECNOLOGIA ASSISTIVA</h2>
+</article>
 </section>
 <section id="encontrar" class="panel">
 <div class="section-head"><div><h2>Encontre recursos para uma atividade</h2><p>Responda às três perguntas. Não informe diagnóstico ou nome do estudante.</p></div></div>
