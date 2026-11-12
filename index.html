@@ -123,7 +123,7 @@ body:not(.ta-welcome) .ta-definition:not(.open){display:none!important}
 .ta-result-item h3{display:inline-block;margin:0 10px 8px 0;color:#d5f1ff}.ta-result-cost{font-size:.8rem;padding:4px 8px;border-radius:20px;background:rgba(142,213,243,.2)}
 .ta-result-item p{line-height:1.55}.ta-result-item summary{cursor:pointer;color:#c8edff;font-weight:800}
 @media(max-width:650px){.resource-wizard-actions>*{width:100%}}
-</style>
+#resourceSuggestionsDialog.open{display:grid!important;position:fixed!important;inset:0!important;z-index:10050!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important}#resourceSuggestionsDialog.open .resource-dialog-card{display:block!important;visibility:visible!important;opacity:1!important;max-height:88vh!important;overflow-y:auto!important}</style>
 </head>
 <body class="intro-open ta-welcome">
 
@@ -303,7 +303,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 <span>Anote o recurso utilizado e o resultado observado. Se facilitou a atividade, avalie mantê-lo; se ajudou parcialmente, ajuste; se não funcionou ou causou desconforto, substitua por outra possibilidade e registre a decisão.</span>
 </article>
 </div>
-<button class="resource-suggestions-card" id="openResourceSuggestions" type="button" aria-haspopup="dialog" aria-controls="resourceSuggestionsDialog">
+<button class="resource-suggestions-card" id="openResourceSuggestions" type="button" onclick="document.getElementById('resourceSuggestionsDialog').classList.add('open');document.body.style.overflow='hidden'" aria-haspopup="dialog" aria-controls="resourceSuggestionsDialog">
   <img src="imagens/imagem-formacao.png" alt="Ilustração sobre recursos e tecnologias assistivas">
   <span class="resource-suggestions-copy">
     <strong id="resourceSuggestionsTitle">SUGESTÕES DOS RECURSOS DE TECNOLOGIA ASSISTIVA</strong>
@@ -313,7 +313,7 @@ body{background:radial-gradient(ellipse at 12% 0%,#dceefa 0,transparent 36%),lin
 </button>
 <div class="ta-definition" id="resourceSuggestionsDialog" role="dialog" aria-modal="true" aria-labelledby="resourceSuggestionsDialogTitle">
   <div class="ta-definition-card identify-detail-card resource-dialog-card">
-    <button class="ta-definition-close" id="closeResourceSuggestions" type="button" aria-label="Fechar">×</button>
+    <button class="ta-definition-close" id="closeResourceSuggestions" type="button" onclick="document.getElementById('resourceSuggestionsDialog').classList.remove('open');document.body.style.overflow=''" aria-label="Fechar">×</button>
     <h2 id="resourceSuggestionsDialogTitle">ENCONTRE POSSIBILIDADES DE TECNOLOGIA ASSISTIVA</h2>
     <p>Responda às três perguntas para receber sugestões relacionadas à atividade e à dificuldade observada. Não informe o nome ou o diagnóstico do estudante.</p>
     <div class="resource-wizard">
