@@ -152,6 +152,24 @@ body:not(.ta-welcome) .ta-definition:not(.open){display:none!important}
   .resource-suggestions-arrow{position:absolute;right:18px;bottom:14px;font-size:2rem;padding:0}
 }
 
+
+/* Exibe a arte completa do card, sem recortar a parte superior ou inferior */
+.resource-suggestions-card{align-items:center}
+.resource-suggestions-card img{
+  height:auto!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  object-fit:contain!important;
+}
+@media(max-width:650px){
+  .resource-suggestions-card img{
+    width:100%!important;
+    height:auto!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+}
+
 </style>
 </head>
 <body class="intro-open ta-welcome">
